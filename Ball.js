@@ -1,4 +1,4 @@
- class Ball{
+ class Ball extends baseClass{
 	 constructor(id,color){
 		this.id = id
 		this.x = Math.floor(Math.random()*cw)

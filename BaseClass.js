@@ -7,5 +7,9 @@ class BaseClass{
 		this.r
 		
 	}
+
+	isTouching(object){
+		return (objectDist(this,object)) <= (this.r +object.r);
+	}
 	
 }
