@@ -1,5 +1,6 @@
-class Robot extends baseClass{
+class Robot extends BaseClass{
 	constructor(id,color){
+		super()
 		this.id = id
 		this.x = Math.floor(Math.random()*cw)
 		this.y = Math.floor(Math.random()*ch)
