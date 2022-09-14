@@ -7,6 +7,7 @@
 		this.yv = 0
 		this.isHeld = false
 		this.color = color
+		this.r = 5
 	}
 
 	 changeVector(x,y){
@@ -17,7 +18,7 @@
 	 draw(){
 		ctx.fillStyle = this.color
 		ctx.beginPath();
-		ctx.arc(this.x,this.y,5,0,Tao)
+		ctx.arc(this.x,this.y,this.r,0,Tao)
 		ctx.fill()
 	}
  }

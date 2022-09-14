@@ -8,8 +8,8 @@ const ch = 400
 c.width = cw
 c.height = ch
 
-let robotArray = Array.from(new Array(1))
-let ballArray = Array.from(new Array(1))
+let robotArray = Array.from(new Array(6))
+let ballArray = Array.from(new Array(14))
 
 
 function clear(){
@@ -31,7 +31,7 @@ window.onload = () =>{
 			ballArray[i] = new Ball(i,'blue')
 		}
 	}
-	draw()
+	setTimeout(draw,250)
 }
 
 
