@@ -46,7 +46,7 @@ class Robot extends BaseClass{
 
 	moveTowardBall(){
 		
-		if(this.targetedBall.x > this.x){
+		if(ballArray[this.targetedBall].x > this.x){
 			//if on right
 			this.ballDir =Math.atan(objectSlope(this,ballArray[this.targetedBall]))
 		}else{
