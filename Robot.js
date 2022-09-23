@@ -30,13 +30,13 @@ class Robot extends BaseClass{
 
 	update(){
 		this.lowest = 2*cw
-		for(i of ballArray){
-			if(dist(this.x,this.y,i.x,i.y) <this.lowest && this.color == i.color){
-				this.lowest = dist(this.x,this.y,i.x,i.y)
-				this.targetedBall =i
+		for(let j in ballArray){
+			if(dist(this.x,this.y,ballArray[j].x,ballArray[j].y) <this.lowest && this.color == ballArray[j].color){
+				this.lowest = dist(this.x,this.y,ballArray[j].x,ballArray[j].y)
+				this.targetedBall =j
 			}
 		}
-		line(this,this.targetedBall)
+		line(this,ballArray[this.targetedBall])
 
 		this.moveTowardBall()
 		//update
@@ -48,10 +48,10 @@ class Robot extends BaseClass{
 		
 		if(this.targetedBall.x > this.x){
 			//if on right
-			this.ballDir =Math.atan(objectSlope(this,this.targetedBall))
+			this.ballDir =Math.atan(objectSlope(this,ballArray[this.targetedBall]))
 		}else{
 			//if on left
-			this.ballDir = Math.atan(objectSlope(this,this.targetedBall))+Math.PI
+			this.ballDir = Math.atan(objectSlope(this,ballArray[this.targetedBall]))+Math.PI
 		}
 		this.xv = Math.cos(this.ballDir) * this.speed
 		this.yv = Math.sin(this.ballDir) * this.speed
