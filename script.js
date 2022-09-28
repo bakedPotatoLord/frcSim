@@ -10,7 +10,7 @@ c.height = ch
 
 let robotArray = Array.from(new Array(6))
 let ballArray = Array.from(new Array(14))
-
+const hub = new Hub();
 
 function clear(){
 	ctx.clearRect(0,0,cw,ch)
@@ -40,18 +40,13 @@ function draw(){
 	clear()
 	
 	for(i of robotArray){
-		i.draw()
-	}
-	for(i of ballArray){
-		i.draw()
-	}
-
-	for(i of robotArray){
 		i.update()
 		i.draw()
 	}
 	for(i of ballArray){
+		i.update()
 		i.draw()
 	}
+	hub.draw()
 	
 }
