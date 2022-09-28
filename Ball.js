@@ -9,10 +9,13 @@
 		this.isgrabbed = false
 		this.color = color
 		this.r = 5
+		this.drag = 0.98
 	}
 
 	update(){
-		this.updatePosition
+
+		this.updatePosition()
+		this.applyDrag(this.drag)
 	}
 
 	updatePosition(){

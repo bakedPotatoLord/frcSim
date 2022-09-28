@@ -10,8 +10,10 @@ class Robot extends BaseClass{
 		this.targetedBall
 		this.hasBall = false
 		this.ballDir ;
-		this.speed = 4
+		this.speed = 0.1
+		this.speedCap = 1
 		this.r = 15
+		this.drag = 0.9
 	}
 
 	draw(){
@@ -36,16 +38,22 @@ class Robot extends BaseClass{
 				this.targetedBall =j
 			}
 		}
-		line(this,ballArray[this.targetedBall])
+		if(this.hasBall){
+			this.applyDrag()
+			ballArray[this.targetedBall].x
+		}else{
+			this.moveTowardBall()
+			this.checkBallColision()
+		}
 
-		this.moveTowardBall()
+		this.applySpeedCap()
 		//update
 		this.x += this.xv
 		this.y += this.yv
 	}
 
 	moveTowardBall(){
-		
+		line(this,ballArray[this.targetedBall])
 		if(ballArray[this.targetedBall].x > this.x){
 			//if on right
 			this.ballDir =Math.atan(objectSlope(this,ballArray[this.targetedBall]))
@@ -53,16 +61,31 @@ class Robot extends BaseClass{
 			//if on left
 			this.ballDir = Math.atan(objectSlope(this,ballArray[this.targetedBall]))+Math.PI
 		}
-		this.xv = Math.cos(this.ballDir) * this.speed
-		this.yv = Math.sin(this.ballDir) * this.speed
+		this.xv += Math.cos(this.ballDir) * this.speed
+		this.yv += Math.sin(this.ballDir) * this.speed
 	}
 
 	checkBallColision(r){
-		for(b of ballArray){
-			if(objectDistdist(r,b) <= r.r+b.r ){
+		for(let b of ballArray){
+			if(this.isTouching(b) && b.color == this.color){
+
 			 this.hasBall = true
+			
+			 ballArray[this.targetedBall].grab(this)
+			}else if(this.isTouching(b)){
+				console.log('tonched a ball that is not of same color')
+				b.xv = 4* Math.cos(Math.atan2(this.x-b.x,this.y-b.y))
+				b.yv = 4* Math.sin(Math.atan2(this.x-b.x,this.y-b.y))
 			}
 		}
 		
+	}
+	applySpeedCap(){
+		if(this.xv >= this.speedCap){
+			this.xv = this.speedCap
+		}
+		if(this.yv >= this.speedCap){
+			this.yv = this.speedCap
+		}
 	}
 }
