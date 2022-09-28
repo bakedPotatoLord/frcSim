@@ -6,20 +6,28 @@
 		this.y = Math.floor(Math.random()*ch)
 		this.xv = 0
 		this.yv = 0
-		this.isHeld = false
+		this.isgrabbed = false
 		this.color = color
 		this.r = 5
 	}
 
-	 changeVector(x,y){
-		 	this.xv+=x
-			this.yv+=y
-	 }
+	update(){
+		this.updatePosition
+	}
 
-	 draw(){
+	updatePosition(){
+		this.x += this.xv
+		this.y += this.yv
+	}
+
+	draw(){
 		ctx.fillStyle = this.color
 		ctx.beginPath();
 		ctx.arc(this.x,this.y,this.r,0,Tao)
 		ctx.fill()
+	}
+
+	grab(robot){
+		this.isgrabbed = true
 	}
  }
