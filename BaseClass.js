@@ -17,7 +17,7 @@ class BaseClass{
 		this.yv = 0
 	}
 	
-	applyDrag(){
+	applyDrag(drag){
 		this.xv *= drag
 		this.yv *= drag
 	}
