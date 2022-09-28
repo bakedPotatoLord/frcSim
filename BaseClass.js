@@ -5,11 +5,15 @@ class BaseClass{
 		this.xv
 		this.yv
 		this.r
-		
+		this.drag = 1
 	}
 
 	isTouching(object){
 		return (objectDist(this,object)) <= (this.r +object.r);
+	}
+
+	isTouchingWall(){
+		return (this.x+ this.r < 0) || (this.x+ this.r > cw) ||(this.y+ this.r < 0) || (this.y+ this.r > ch)
 	}
 	
 	stop(){
@@ -17,8 +21,8 @@ class BaseClass{
 		this.yv = 0
 	}
 	
-	applyDrag(drag){
-		this.xv *= drag
-		this.yv *= drag
+	applyDrag(){
+		this.xv *=this.drag
+		this.yv *=this.drag
 	}
 }
