@@ -23,3 +23,7 @@ function line(obj1,obj2){
 	ctx.lineTo(obj2.x,obj2.y)
 	ctx.stroke()
 }
+
+function clamp(num, min, max){
+	return Math.min(Math.max(num, min), max);
+} 
