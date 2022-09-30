@@ -6,7 +6,7 @@
 		this.y = Math.floor(Math.random()*ch)
 		this.xv = 0
 		this.yv = 0
-		this.isgrabbed = false
+		this.grabbed = false
 		this.color = color
 		this.r = 5
 		this.drag = 0.98
@@ -15,6 +15,7 @@
 	update(){
 
 		this.updatePosition()
+		
 		this.applyDrag(this.drag)
 	}
 
@@ -30,7 +31,7 @@
 		ctx.fill()
 	}
 
-	grab(robot){
+	grab(){
 		this.isgrabbed = true
 	}
  }
