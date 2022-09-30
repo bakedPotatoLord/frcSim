@@ -10,8 +10,8 @@ class Robot extends BaseClass{
 		this.targetedBall
 		this.hasBall = false
 		this.ballDir ;
-		this.speed = 0.1
-		this.speedCap = 1
+		this.speed = 2
+		this.speedCap = 2
 		this.r = 15
 		this.drag = 0.9
 	}
@@ -33,36 +33,34 @@ class Robot extends BaseClass{
 	update(){
 		this.lowest = 2*cw
 		for(let j in ballArray){
-			if(dist(this.x,this.y,ballArray[j].x,ballArray[j].y) <this.lowest && this.color == ballArray[j].color){
+			if(dist(this.x,this.y,ballArray[j].x,ballArray[j].y) <this.lowest && this.color == ballArray[j].color && !ballArray[j].grabbed){
 				this.lowest = dist(this.x,this.y,ballArray[j].x,ballArray[j].y)
 				this.targetedBall =j
+				console.log(ballArray[j].grabbed)
 			}
 		}
 		if(this.hasBall){
 			this.applyDrag()
-			ballArray[this.targetedBall].x
+			this.getBall().x
 		}else{
 			this.moveTowardBall()
 			this.checkBallColision()
 		}
-
-		this.applySpeedCap()
 		//update
-		this.x += this.xv
-		this.y += this.yv
+
+		this.x += clamp(this.xv,-this.speedCap,this.speedCap)
+		this.y += clamp(this.yv,-this.speedCap,this.speedCap)
+		
 	}
 
 	moveTowardBall(){
-		line(this,ballArray[this.targetedBall])
-		if(ballArray[this.targetedBall].x > this.x){
-			//if on right
-			this.ballDir =Math.atan(objectSlope(this,ballArray[this.targetedBall]))
-		}else{
-			//if on left
-			this.ballDir = Math.atan(objectSlope(this,ballArray[this.targetedBall]))+Math.PI
-		}
-		this.xv += Math.cos(this.ballDir) * this.speed
-		this.yv += Math.sin(this.ballDir) * this.speed
+		line(this,this.getBall())
+
+
+		this.ballDir = Math.atan2(this.y-this.getBall().y,this.x-this.getBall().x)+Math.PI
+
+		this.xv = Math.cos(this.ballDir) * this.speed
+		this.yv = Math.sin(this.ballDir) * this.speed
 	}
 
 	checkBallColision(r){
@@ -71,7 +69,7 @@ class Robot extends BaseClass{
 
 			 this.hasBall = true
 			
-			 ballArray[this.targetedBall].grab(this)
+			 this.getBall().grab()
 			}else if(this.isTouching(b)){
 				console.log('tonched a ball that is not of same color')
 				b.xv = 4* Math.cos(Math.atan2(this.x-b.x,this.y-b.y))
@@ -80,12 +78,8 @@ class Robot extends BaseClass{
 		}
 		
 	}
-	applySpeedCap(){
-		if(this.xv >= this.speedCap){
-			this.xv = this.speedCap
-		}
-		if(this.yv >= this.speedCap){
-			this.yv = this.speedCap
-		}
+
+	getBall(){
+		return ballArray[this.targetedBall]
 	}
 }
