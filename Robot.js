@@ -14,6 +14,11 @@ class Robot extends BaseClass{
 		this.speedCap = 2
 		this.r = 15
 		this.drag = 0.9
+
+		while(this.isTouching(hub) || this.isTouchingWall()){
+			this.x = Math.floor(Math.random()*cw)
+			this.y = Math.floor(Math.random()*ch)
+		}
 	}
 
 	draw(){
