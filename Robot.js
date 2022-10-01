@@ -36,7 +36,6 @@ class Robot extends BaseClass{
 			if(dist(this.x,this.y,ballArray[j].x,ballArray[j].y) <this.lowest && this.color == ballArray[j].color && !ballArray[j].grabbed){
 				this.lowest = dist(this.x,this.y,ballArray[j].x,ballArray[j].y)
 				this.targetedBall =j
-				console.log(ballArray[j].grabbed)
 			}
 		}
 		if(this.hasBall){
