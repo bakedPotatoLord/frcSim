@@ -6,7 +6,7 @@
 		this.y = Math.floor(Math.random()*ch)
 		this.xv = 0
 		this.yv = 0
-		this.grabbed = false
+		this.state = 'free'
 		this.color = color
 		this.r = 5
 		this.drag = 0.98
@@ -18,7 +18,7 @@
 	}
 
 	update(){
-
+		
 		this.checkWallColision()
 		this.applyDrag(this.drag)
 		this.updatePosition()
@@ -46,13 +46,20 @@
 	}
 
 	draw(){
-		ctx.fillStyle = this.color
-		ctx.beginPath();
-		ctx.arc(this.x,this.y,this.r,0,Tao)
-		ctx.fill()
+		if(this.state = 'free'){
+			ctx.fillStyle = this.color
+			ctx.beginPath();
+			ctx.arc(this.x,this.y,this.r,0,Tao)
+			ctx.fill()
+		}
+		
 	}
 
 	grab(){
-		this.isgrabbed = true
+		this.state = 'grabbed'
+	}
+
+	throw(){
+		this.state = true
 	}
  }
