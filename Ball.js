@@ -58,7 +58,7 @@
 			ctx.arc(this.x,this.y,this.r,0,Tao)
 			ctx.fill()
 		}else{
-			console.log('cant draw bc im grabbed')
+			
 		}
 		
 	}
