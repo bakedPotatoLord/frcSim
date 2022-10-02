@@ -38,14 +38,13 @@ class Robot extends BaseClass{
 	update(){
 		this.lowest = 2*cw
 		for(let j in ballArray){
-			if(dist(this.x,this.y,ballArray[j].x,ballArray[j].y) <this.lowest && this.color == ballArray[j].color && !ballArray[j].grabbed){
+			if(dist(this.x,this.y,ballArray[j].x,ballArray[j].y) <this.lowest && this.color == ballArray[j].color && ballArray[j].state == 'free'){
 				this.lowest = dist(this.x,this.y,ballArray[j].x,ballArray[j].y)
 				this.targetedBall =j
 			}
 		}
 		if(this.hasBall){
 			this.applyDrag()
-			this.getBall().x
 		}else{
 			this.moveTowardBall()
 			this.checkBallColision()
@@ -67,15 +66,15 @@ class Robot extends BaseClass{
 		this.yv = Math.sin(this.ballDir) * this.speed
 	}
 
-	checkBallColision(r){
+	checkBallColision(){
 		for(let b of ballArray){
 			if(this.isTouching(b) && b.color == this.color){
 
 			 this.hasBall = true
 			
-			 this.getBall().grab()
+			 ballArray[this.targetedBall].grab()
 			}else if(this.isTouching(b)){
-				console.log('tonched a ball that is not of same color')
+				console.log('touched a ball that is not of same color')
 				b.xv = 4* Math.cos(Math.atan2(this.x-b.x,this.y-b.y))
 				b.yv = 4* Math.sin(Math.atan2(this.x-b.x,this.y-b.y))
 			}
