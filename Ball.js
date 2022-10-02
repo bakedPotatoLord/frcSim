@@ -19,9 +19,15 @@
 
 	update(){
 		
-		this.checkWallColision()
-		this.applyDrag(this.drag)
-		this.updatePosition()
+		
+
+		if(this.state == 'free'){
+			this.checkWallColision()
+			this.applyDrag(this.drag)
+			this.updatePosition()
+		}else if(this.state == 'grabbed'){
+
+		}
 	}
 
 	updatePosition(){
@@ -46,20 +52,24 @@
 	}
 
 	draw(){
-		if(this.state = 'free'){
+		if(this.state == 'free'){
 			ctx.fillStyle = this.color
 			ctx.beginPath();
 			ctx.arc(this.x,this.y,this.r,0,Tao)
 			ctx.fill()
+		}else{
+			console.log('cant draw bc im grabbed')
 		}
 		
 	}
 
 	grab(){
 		this.state = 'grabbed'
+		this.xv= 0
+		this.yv=0
 	}
 
 	throw(){
-		this.state = true
+		this.state = 'air'
 	}
  }
