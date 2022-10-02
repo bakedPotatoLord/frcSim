@@ -35,21 +35,7 @@
 		this.y += this.yv
 	}
 
-	checkWallColision(){
-		if(this.isTouchingWall()){
-			console.log('touching wall')
-			if((this.x- this.r < 0)){
-				this.xv = Math.abs(this.xv) 
-			}else if((this.x+ this.r > cw)){
-				this.xv = -Math.abs(this.xv) 
-			}
-			if((this.y- this.r < 0)){
-				this.yv = Math.abs(this.yv) 
-			}else if((this.y+ this.r > ch)){
-				this.yv = -Math.abs(this.yv) 
-			}
-		}
-	}
+	
 
 	draw(){
 		if(this.state == 'free'){
