@@ -10,14 +10,15 @@ class Robot extends BaseClass{
 		this.targetedBall
 		this.hasBall = false
 		this.ballDir ;
-		this.speed = 2
-		this.speedCap = 2
+		this.speed = 0.1
+		this.speedCap = 1
 		this.r = 15
-		this.drag = 0.9
+		this.drag = 0.8
 
 		while(this.isTouching(hub) || this.isTouchingWall()){
 			this.x = Math.floor(Math.random()*cw)
 			this.y = Math.floor(Math.random()*ch)
+
 		}
 	}
 
@@ -49,6 +50,9 @@ class Robot extends BaseClass{
 			this.moveTowardBall()
 			this.checkBallColision()
 		}
+		this.checkRobotColision()
+		this.checkHubColision()
+		this.checkWallColision()
 		//update
 
 		this.x += clamp(this.xv,-this.speedCap,this.speedCap)
@@ -62,24 +66,46 @@ class Robot extends BaseClass{
 
 		this.ballDir = Math.atan2(this.y-this.getBall().y,this.x-this.getBall().x)+Math.PI
 
-		this.xv = Math.cos(this.ballDir) * this.speed
-		this.yv = Math.sin(this.ballDir) * this.speed
+		this.xv += Math.cos(this.ballDir) * this.speed
+		this.yv += Math.sin(this.ballDir) * this.speed
+		this.xv = clamp(this.xv,-this.speedCap,this.speedCap)
+		this.yv = clamp(this.yv,-this.speedCap,this.speedCap)
 	}
 
 	checkBallColision(){
 		for(let b of ballArray){
-			if(this.isTouching(b) && b.color == this.color){
-
-			 this.hasBall = true
-			
-			 ballArray[this.targetedBall].grab()
-			}else if(this.isTouching(b)){
-				console.log('touched a ball that is not of same color')
-				b.xv = 4* Math.cos(Math.atan2(this.x-b.x,this.y-b.y))
-				b.yv = 4* Math.sin(Math.atan2(this.x-b.x,this.y-b.y))
+			if(this.isTouching(b) ){
+				if(this.color==b.color && !this.hasBall){
+					this.hasBall = true
+			 		ballArray[this.targetedBall].grab()
+				}else{
+					b.xv = 4* Math.cos(Math.atan2(this.x-b.x,this.y-b.y))
+					b.yv = 4* Math.sin(Math.atan2(this.x-b.x,this.y-b.y))
+				}
 			}
 		}
-		
+	}
+
+	checkRobotColision(){
+		for(let r of robotArray){
+			if(this.isTouching(r) && (this.x != r.x && this.y !=r.y)){
+				this.xv +=  Math.cos(Math.atan2(this.x-r.x,this.y-r.y))
+				this.yv +=  Math.sin(Math.atan2(this.x-r.x,this.y-r.y))
+			}
+		}
+	}
+
+	checkHubColision(){
+			if(this.isTouching(hub)){
+				//this.xv +=  Math.cos(Math.atan2(this.x-hub.x,this.y-hub.y)+Math.PI)*this.speed*4
+				//this.yv +=  Math.sin(Math.atan2(this.x-hub.x,this.y-hub.y)+Math.PI)*this.speed*4
+
+			}
+
+			while(this.isTouching(hub)){
+				this.x +=  Math.cos(Math.atan2(this.x-hub.x,this.y-hub.y)+Math.PI)*this.speed*4
+				this.y +=  Math.sin(Math.atan2(this.x-hub.x,this.y-hub.y)+Math.PI)*this.speed*4
+			}
 	}
 
 	getBall(){
