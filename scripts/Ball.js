@@ -1,6 +1,6 @@
-import { BaseClass } from "./BaseClass";
-import { Tao } from "./helpers";
-import { cw, ch, ctx, hub, robotArray } from "./script";
+import { BaseClass } from "./BaseClass.js";
+import { Tao } from "./helpers.js";
+import { cw, ch, ctx, hub, robotArray } from "./script.js";
 export default class Ball extends BaseClass {
     id;
     state;

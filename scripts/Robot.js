@@ -1,6 +1,6 @@
-import { BaseClass } from "./BaseClass";
-import { ballArray, ch, ctx, cw, hub, robotArray } from "./script";
-import { clamp, dist, line, Tao } from "./helpers";
+import { BaseClass } from "./BaseClass.js";
+import { ballArray, ch, ctx, cw, hub, robotArray } from "./script.js";
+import { clamp, dist, line, Tao } from "./helpers.js";
 export default class Robot extends BaseClass {
     id;
     color;
