@@ -1,4 +1,4 @@
-import { ctx } from "./script"
+import { ctx } from "./script.js"
 
 export const Tao =2* Math.PI
 

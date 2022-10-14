@@ -1,12 +1,12 @@
-import { BaseClass } from "./BaseClass"
-import { Tao } from "./helpers"
-import { cw, ch, ctx, hub, robotArray } from "./script"
+import { BaseClass } from "./BaseClass.js"
+import { Tao } from "./helpers.js"
+import { cw, ch, ctx, hub, robotArray } from "./script.js"
 
 export default class Ball extends BaseClass{
 	 id: any
 	 state: string
-	 color: any
-	 constructor(id,color){
+	 color: string
+	 constructor(id: number,color: string){
 		super()
 		this.id = id
 		this.x = Math.floor(Math.random()*cw)

@@ -1,8 +1,8 @@
 
 
-import { BaseClass } from "./BaseClass"
-import { Tao } from "./helpers"
-import { cw, ch, ctx } from "./script"
+import { BaseClass } from "./BaseClass.js"
+import { Tao } from "./helpers.js"
+import { cw, ch, ctx } from "./script.js"
 
 export default class Hub extends BaseClass {
 

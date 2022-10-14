@@ -1,5 +1,5 @@
-import { objectDist } from "./helpers";
-import { cw, ch } from "./script";
+import { objectDist } from "./helpers.js";
+import { cw, ch } from "./script.js";
 export class BaseClass {
     x;
     y;
