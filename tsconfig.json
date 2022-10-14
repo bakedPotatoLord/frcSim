@@ -4,6 +4,6 @@
         "watch": true,
         "lib":["DOM","ES2020"]
     },
-    "include": ["*.ts"] ,
+    "include": ["scripts/*.ts"] ,
     "exclude": ["node_modules"]
 }
