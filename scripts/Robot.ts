@@ -1,4 +1,16 @@
-class Robot extends BaseClass{
+import { BaseClass } from "./BaseClass"
+import {ballArray, ch, ctx, cw, hub, robotArray} from "./script"
+import { clamp, dist, line, Tao } from "./helpers"
+
+export default class Robot extends BaseClass{
+	id: any
+	color: string
+	targetedBall: any
+	hasBall: boolean
+	ballDir: number
+	speed: number
+	speedCap: number
+	lowest: number
 	constructor(id,color){
 		super()
 		this.id = id
