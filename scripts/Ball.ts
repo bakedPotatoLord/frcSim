@@ -1,4 +1,11 @@
- class Ball extends BaseClass{
+import { BaseClass } from "./BaseClass"
+import { Tao } from "./helpers"
+import { cw, ch, ctx, hub, robotArray } from "./script"
+
+export default class Ball extends BaseClass{
+	 id: any
+	 state: string
+	 color: any
 	 constructor(id,color){
 		super()
 		this.id = id
@@ -23,7 +30,7 @@
 
 		if(this.state == 'free'){
 			this.checkWallColision()
-			this.applyDrag(this.drag)
+			this.applyDrag()
 			this.updatePosition()
 		}else if(this.state == 'grabbed'){
 

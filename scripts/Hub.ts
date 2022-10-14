@@ -1,4 +1,11 @@
-class Hub extends BaseClass {
+
+
+import { BaseClass } from "./BaseClass"
+import { Tao } from "./helpers"
+import { cw, ch, ctx } from "./script"
+
+export default class Hub extends BaseClass {
+
     constructor(){
         super()
         this.x = cw/2

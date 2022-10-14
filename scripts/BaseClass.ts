@@ -1,4 +1,14 @@
-class BaseClass{
+
+import {objectDist} from "./helpers"
+import { cw, ch } from "./script"
+
+export class BaseClass{
+	x: number
+	y: number
+	xv: number
+	yv: number
+	r: number
+	drag: number
 	constructor(){
 		this.x
 		this.y
