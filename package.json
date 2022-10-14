@@ -1,0 +1,23 @@
+{
+  "name": "frcsim",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Ball.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bakedPotatoLord/frcSim.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bakedPotatoLord/frcSim/issues"
+  },
+  "homepage": "https://github.com/bakedPotatoLord/frcSim#readme",
+  "devDependencies": {
+    "typescript": "^4.8.4"
+  }
+}
