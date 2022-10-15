@@ -13,7 +13,7 @@ c.width = cw
 c.height = ch
 
 let robotArray : Robot[] = Array.from(new Array(6))
-let ballArray = Array.from(new Array(14))
+let ballArray: Ball[] = Array.from(new Array(14))
 const hub = new Hub();
 
 function clear(){
