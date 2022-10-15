@@ -3,7 +3,7 @@ import { Tao } from "./helpers.js"
 import { cw, ch, ctx, hub, robotArray } from "./script.js"
 
 export default class Ball extends BaseClass{
-	 id: any
+	 id: number
 	 state: string
 	 color: string
 	 constructor(id: number,color: string){
@@ -25,9 +25,6 @@ export default class Ball extends BaseClass{
 	}
 
 	update(){
-		
-		
-
 		if(this.state == 'free'){
 			this.checkWallColision()
 			this.applyDrag()
@@ -41,8 +38,6 @@ export default class Ball extends BaseClass{
 		this.x += this.xv
 		this.y += this.yv
 	}
-
-	
 
 	draw(){
 		if(this.state == 'free'){
