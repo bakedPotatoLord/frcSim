@@ -18,11 +18,11 @@ export class BaseClass{
 		this.drag = 1
 	}
 
-	isTouching(object){
+	isTouching(object: BaseClass){
 		return (objectDist(this,object)) <= (this.r +object.r);
 	}
 
-	istouchingArr(objectArr){
+	istouchingArr(objectArr: BaseClass[]){
 		for(let k of objectArr){
 			if (this.isTouching(k)){
 				return true
