@@ -3,17 +3,15 @@ import {ballArray, ch, ctx, cw, hub, robotArray} from "./script.js"
 import { clamp, dist, line, Tao } from "./helpers.js"
 
 export default class Robot extends BaseClass{
-	id: any
 	color: string
-	targetedBall: any
+	targetedBall: number
 	hasBall: boolean
 	ballDir: number
 	speed: number
 	speedCap: number
 	lowest: number
-	constructor(id,color){
+	constructor(color){
 		super()
-		this.id = id
 		this.x = Math.floor(Math.random()*cw)
 		this.y = Math.floor(Math.random()*ch)
 		this.xv = 0
@@ -53,7 +51,7 @@ export default class Robot extends BaseClass{
 		for(let j in ballArray){
 			if(dist(this.x,this.y,ballArray[j].x,ballArray[j].y) <this.lowest && this.color == ballArray[j].color && ballArray[j].state == 'free'){
 				this.lowest = dist(this.x,this.y,ballArray[j].x,ballArray[j].y)
-				this.targetedBall =j
+				this.targetedBall = Number(j)
 			}
 		}
 		if(this.hasBall){

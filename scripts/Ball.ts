@@ -3,12 +3,12 @@ import { Tao } from "./helpers.js"
 import { cw, ch, ctx, hub, robotArray } from "./script.js"
 
 export default class Ball extends BaseClass{
-	 id: number
+
 	 state: string
 	 color: string
-	 constructor(id: number,color: string){
+	 constructor(color: string){
 		super()
-		this.id = id
+
 		this.x = Math.floor(Math.random()*cw)
 		this.y = Math.floor(Math.random()*ch)
 		this.xv = 0

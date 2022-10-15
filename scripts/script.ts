@@ -24,16 +24,16 @@ window.onload = () =>{
 	let i:any
 	for(i in robotArray){
 		if(i%2==0){
-			robotArray[i] = new Robot(i,'red')
+			robotArray[i] = new Robot('red')
 		}else{
-			robotArray[i] = new Robot(i,'blue')
+			robotArray[i] = new Robot('blue')
 		}
 	}
 	for(i in ballArray){
 		if(i%2==0){
-			ballArray[i] = new Ball(i,'red')
+			ballArray[i] = new Ball('red')
 		}else{
-			ballArray[i] = new Ball(i,'blue')
+			ballArray[i] = new Ball('blue')
 		}
 	}
 	setTimeout(draw,250)
