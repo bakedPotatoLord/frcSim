@@ -12,8 +12,8 @@ const ch = 400
 c.width = cw
 c.height = ch
 
-let robotArray = Array.from(new Array(6))
-let ballArray = Array.from(new Array(14))
+let robotArray : Robot[] = Array.from(new Array(6))
+let ballArray: Ball[] = Array.from(new Array(14))
 const hub = new Hub();
 
 function clear(){
